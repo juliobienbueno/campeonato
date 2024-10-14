@@ -1,0 +1,25 @@
+
+
+
+
+/* BASE - FOOTER  */
+    .footer-body {
+        padding: 40px 0;
+    }
+    .footer-body h5 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    .footer-body ul {
+        padding-left: 0;
+        list-style-type: none;
+    }
+    .footer-body ul li {
+        margin-bottom: 10px;
+    }
+    .footer-body ul li a {
+        text-decoration: none;
+    }
+    .footer-body ul li a:hover {
+        text-decoration: underline;
+    }
