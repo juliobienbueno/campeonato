@@ -1,25 +1,295 @@
+/* Custom styles */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+.search-form {
+    width: 40%;
+}
+
+.match-card {
+    transition: transform 0.2s;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.match-card:hover {
+    transform: translateY(-5px);
+}
+
+.live-indicator {
+    color: #fff;
+    animation: blink 1s infinite;
+}
+
+.team {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    justify-content: space-between;
+}
+
+.team-logo {
+    margin-right: 10px;
+}
+
+.team-name {
+    flex-grow: 1;
+}
+
+.score {
+    font-weight: bold;
+    font-size: 1.2em;
+    min-width: 30px;
+    text-align: center;
+}
+
+.tournament-info {
+    text-align: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.social-links a {
+    font-size: 1.5em;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #0d6efd !important;
+}
+
+/* Match view specific styles */
+.match-header {
+    padding: 2rem 0;
+}
+
+.team-logo-lg {
+    width: 80px;
+    height: 80px;
+}
+
+.score-display {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.match-nav .nav-link {
+    border-radius: 0;
+    padding: 1rem;
+    color: #333;
+}
+
+.match-nav .nav-link.active {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.timeline-item:last-child {
+    border-bottom: none;
+}
+
+.timeline-item .time {
+    font-weight: bold;
+    color: #0d6efd;
+    margin-right: 10px;
+}
+
+.stats-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.stat-label {
+    flex: 1;
+    font-weight: 500;
+}
+
+.stat-values {
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+}
+
+.progress {
+    width: 100%;
+    height: 25px;
+}
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-form {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .match-nav .nav-link {
+        padding: 0.5rem;
+    }
+
+    .score-display {
+        font-size: 2rem;
+    }
+
+    .team-logo-lg {
+        width: 60px;
+        height: 60px;
+    }
+}
 
 
 
 
 /* BASE - FOOTER  */
-    .footer-body {
-        padding: 40px 0;
-    }
-    .footer-body h5 {
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
-    .footer-body ul {
-        padding-left: 0;
-        list-style-type: none;
-    }
-    .footer-body ul li {
-        margin-bottom: 10px;
-    }
-    .footer-body ul li a {
-        text-decoration: none;
-    }
-    .footer-body ul li a:hover {
-        text-decoration: underline;
-    }
+
+
+.footer-body {
+    padding: 40px 0;
+}
+
+.footer-body h5 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.footer-body ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.footer-body ul li {
+    margin-bottom: 10px;
+}
+
+.footer-body ul li a {
+    text-decoration: none;
+}
+
+.footer-body ul li a:hover {
+    text-decoration: underline;
+}
+
+/*BASE PERFIL*/
+
+.bg-dark-custom {
+    background-color: #1a1a1a;
+}
+
+.online-indicator {
+    width: 12px;
+    height: 12px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    border: 2px solid white;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.stat-progress {
+    height: 8px;
+    border-radius: 4px;
+}
+
+.profile-stats {
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.match-card {
+    border-radius: 15px;
+    background: linear-gradient(145deg, #f0f4ff, #e8eeff);
+    padding: 20px;
+}
+
+.team-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.vs-badge {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.activity-item:hover {
+    background-color: #f8f9fa;
+    transition: background-color 0.3s;
+}
+
+
+/*vista Digitar Partido*/
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    background-color: #f0f2f5;
+    color: #1a1a1a;
+    padding: 20px;
+}
+
+.match-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+

@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'campeonato.apps.CampeonatoConfig'
+    'campeonato'
 ]
 
 MIDDLEWARE = [
@@ -118,6 +118,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
+
+#Supabase
+SUPABASE_URL = 'https://ylviircdnwgxuczbczlq.supabase.co'
+SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlsdmlpcmNkbndneHVjemJjemxxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzA2ODAxMzMsImV4cCI6MjA0NjI1NjEzM30.fL0hpLky-33NvBhM5m64Yg4F5xW4UBmnA606H7IyX40'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

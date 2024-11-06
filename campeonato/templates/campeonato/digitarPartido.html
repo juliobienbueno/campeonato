@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Inicio - FutArg{% endblock %}
+
+{% block content %}
+
+<!-- Match Header -->
+<div class="match-header">
+    <div class="container">
+        <div class="team-info">
+            <img src="https://images.unsplash.com/photo-1589487391730-58f20eb2c308?w=80&h=80&fit=crop" alt="Real Mandril" class="team-logo">
+            <h3>Real Mandril</h3>
+            <div class="score" id="homeScore">0</div>
+        </div>
+        <div class="match-status">
+            <div class="live-indicator">● EN VIVO</div>
+            <div class="match-time" id="matchTime">65'</div>
+        </div>
+        <div class="team-info">
+            <img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=80&h=80&fit=crop" alt="Meredona" class="team-logo">
+            <h3>Meredona</h3>
+            <div class="score" id="awayScore">0</div>
+        </div>
+    </div>
+</div>
+
+<!-- Match Controls -->
+<div class="container main-content">
+    <div class="control-panel">
+        <h2>Control del Partido</h2>
+        
+        <div class="team-controls">
+            <div class="team-section">
+                <h3>Real Mandril</h3>
+                <div class="button-group">
+                    <button class="btn btn-goal" onclick="prepareEvent('home', 'goal')">
+                        <i class="fas fa-futbol"></i> Gol
+                    </button>
+                    <button class="btn btn-yellow" onclick="prepareEvent('home', 'yellow')">
+                        <i class="fas fa-square"></i> Tarjeta Amarilla
+                    </button>
+                    <button class="btn btn-red" onclick="prepareEvent('home', 'red')">
+                        <i class="fas fa-square"></i> Tarjeta Roja
+                    </button>
+                </div>
+                <div class="players-list">
+                    <h4>Jugadores</h4>
+                    <select id="homePlayerSelect" class="player-select">
+                        <option value="">Seleccionar jugador...</option>
+                        <option value="1">1 - Manuel Neuer (GK)</option>
+                        <option value="6">6 - Joshua Kimmich (MF)</option>
+                        <option value="9">9 - Robert Lewandowski (FW)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="team-section">
+                <h3>Meredona</h3>
+                <div class="button-group">
+                    <button class="btn btn-goal" onclick="prepareEvent('away', 'goal')">
+                        <i class="fas fa-futbol"></i> Gol
+                    </button>
+                    <button class="btn btn-yellow" onclick="prepareEvent('away', 'yellow')">
+                        <i class="fas fa-square"></i> Tarjeta Amarilla
+                    </button>
+                    <button class="btn btn-red" onclick="prepareEvent('away', 'red')">
+                        <i class="fas fa-square"></i> Tarjeta Roja
+                    </button>
+                </div>
+                <div class="players-list">
+                    <h4>Jugadores</h4>
+                    <select id="awayPlayerSelect" class="player-select">
+                        <option value="">Seleccionar jugador...</option>
+                        <option value="1">1 - Marc-André ter Stegen (GK)</option>
+                        <option value="21">21 - Frenkie de Jong (MF)</option>
+                        <option value="9">9 - Memphis Depay (FW)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="event-input">
+            <form id="eventForm" onsubmit="addCustomEvent(event)">
+                <input type="text" id="eventText" placeholder="Añadir evento del partido...">
+                <button type="submit" class="btn btn-primary">Añadir</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Match Events -->
+    <div class="events-panel">
+        <h2>Eventos del Partido</h2>
+        <div class="events-list" id="eventsList">
+            <div class="event-item">
+                <span class="event-time">65'</span>
+                <div class="event-content">
+                    <i class="fas fa-clock"></i>
+                    <span>Partido en curso</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function prepareEvent(team, type) {
+        const playerSelect = document.getElementById(team + 'PlayerSelect');
+        const eventInput = document.getElementById('eventText');
+        const teamName = team === 'home' ? 'Real Mandril' : 'Meredona';
+        const player = playerSelect.options[playerSelect.selectedIndex].text;
+        
+        let eventText = '';
+        
+        if (type === 'goal') {
+            eventText = `⚽ ¡GOL! ${player} anota para ${teamName}`;
+            const scoreElement = document.getElementById(team + 'Score');
+            const currentScore = parseInt(scoreElement.textContent);
+            scoreElement.textContent = currentScore + 1;
+        } else if (type === 'yellow') {
+            eventText = `🟨 Tarjeta Amarilla para ${player} (${teamName})`;
+        } else if (type === 'red') {
+            eventText = `🟥 Tarjeta Roja para ${player} (${teamName})`;
+        }
+        
+        eventInput.value = eventText;
+    }
+
+    function addCustomEvent(e) {
+        e.preventDefault();
+        const input = document.getElementById('eventText');
+        if (input.value.trim()) {
+            addEventToList(input.value);
+            input.value = '';
+            
+            // Reset player selections
+            document.getElementById('homePlayerSelect').selectedIndex = 0;
+            document.getElementById('awayPlayerSelect').selectedIndex = 0;
+        }
+    }
+
+    function addEventToList(text) {
+        const eventsList = document.getElementById('eventsList');
+        const time = document.getElementById('matchTime').textContent;
+        
+        const eventItem = document.createElement('div');
+        eventItem.className = 'event-item';
+        eventItem.innerHTML = `
+            <span class="event-time">${time}</span>
+            <div class="event-content">
+                <i class="fas fa-info-circle"></i>
+                <span>${text}</span>
+            </div>
+        `;
+        
+        eventsList.insertBefore(eventItem, eventsList.firstChild);
+    }
+
+    // Simulate match time
+    setInterval(() => {
+        const timeElement = document.getElementById('matchTime');
+        let currentMinute = parseInt(timeElement.textContent);
+        if (currentMinute < 90) {
+            currentMinute++;
+            timeElement.textContent = currentMinute + "'";
+        }
+    }, 60000); // Update every minute
+</script>
+{% endblock %}
