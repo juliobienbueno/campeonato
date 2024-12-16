@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Inicio - FutArg{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4">Partidos en Vivo</h2>
+
+            <!-- Live Matches Grid -->
+            <div class="row g-4">
+                <!-- Match Card 1 -->
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="card match-card">
+                        <div class="card-header bg-danger text-white">
+                            <span
+                                class="live-indicator">● EN VIVO</span>
+                            <span class="match-time">65'</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="team">
+                                <img src="https://placehold.co/30x30"
+                                    alt="Team 1" class="team-logo">
+                                <span class="team-name">Real Mandril</span>
+                                <span class="score">2</span>
+                            </div>
+                            <div class="team">
+                                <img src="https://placehold.co/30x30"
+                                    alt="Team 2" class="team-logo">
+                                <span class="team-name">Meredona</span>
+                                <span class="score">1</span>
+                            </div>
+                            <div>
+                                <span class><a
+                                        href="partido.html">Ver</a></span>
+                            </div>
+                            <div class="tournament-info">
+                                <small
+                                    class="text-muted">[nombrecampeonatovigente]</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Match Card 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card match-card">
+                        <div class="card-header bg-danger text-white">
+                            <span class="live-indicator">● EN VIVO</span>
+                            <span class="match-time">33'</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="team">
+                                <img src="https://placehold.co/30x30"
+                                    alt="Team 1" class="team-logo">
+                                <span class="team-name">River Plate</span>
+                                <span class="score">0</span>
+                            </div>
+                            <div class="team">
+                                <img src="https://placehold.co/30x30"
+                                    alt="Team 2" class="team-logo">
+                                <span class="team-name">Santa Marta</span>
+                                <span class="score">0</span>
+                            </div>
+                            <div>
+                                <span class><a
+                                        href="{% url 'partido' %}">Ver</a></span>
+                            </div>
+                            <div class="tournament-info">
+                                <small
+                                    class="text-muted">[nombrecampeonatovigente]</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Match Card 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card match-card">
+                        <div class="card-header bg-danger text-white">
+                            <span class="live-indicator">● EN VIVO</span>
+                            <span class="match-time">78'</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="team">
+                                <img src="https://placehold.co/30x30"
+                                    alt="Team 1" class="team-logo">
+                                <span class="team-name">Cebollitas</span>
+                                <span class="score">3</span>
+                            </div>
+                            <div class="team">
+                                <img src="https://placehold.co/30x30"
+                                    alt="Team 2" class="team-logo">
+                                <span class="team-name">Argetinos Jr</span>
+                                <span class="score">2</span>
+                            </div>
+                            <div>
+                                <span class><a
+                                        href="partido.html">Ver</a></span>
+                            </div>
+                            <div class="tournament-info">
+                                <small
+                                    class="text-muted">[nombrecampeonatovigente]
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}
